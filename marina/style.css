@@ -66,20 +66,25 @@ button:hover {
             cursor: pointer;
              width: 700px;              
     height: 100px;  
+   
         }
+ 
+.comida:hover {
+    background-color: #ceb4b4;
+}
  
         .menu {
             display: flex;            
             align-items: center;  
             gap: 1.5rem;
             justify-content: center;  
-
+ 
         }
-
+ 
         .menu a {
             color: white;
         }
         .buscar {
             justify-content: center;
         }
-        
+       
