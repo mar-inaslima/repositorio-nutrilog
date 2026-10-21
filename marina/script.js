@@ -45,30 +45,71 @@ document.addEventListener('DOMContentLoaded', function()  {
 
 // logica do carrinho
 
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  let carrinho = JSON.parse(localStorage.getItem('nutrilog')) || [];
+            
+        document.addEventListener("DOMContentLoaded", atualizarCarrinho);
 
-document.querySelectorAll('.btn-adicionar').forEach(botao => {
-  botao.addEventListener('click', function() {
-    // 1. Pega os dados do botão
-    const item = { nome: this.dataset.nome, preco: parseFloat(this.dataset.preco) };
-    
-    // 2. Salva na lista
-    carrinho.push(item);
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        
+        document.addEventListener("click", function(e) {
+            
+            if (e.target.classList.contains("btn-adicionar")) {
+                const nome = e.target.dataset.nome;
+                const preco = parseFloat(e.target.dataset.preco);
 
-    alert(`${item.nome} foi ao carrinho!`);
-  });
-});
+                carrinho.push({ nome, preco });
+                localStorage.setItem('nutrilog', JSON.stringify(carrinho));
+                atualizarCarrinho();
+                
+                alert(nome + " foi adicionado ao carrinho!");
+            }
 
-const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-const lista = document.getElementById('lista-carrinho');
-let total = 0;
+           
+            if (e.target.id === "btn-finalizar") {
+                alert("Pedido finalizado com sucesso! Obrigado por escolher a Nutrilog.");
+                carrinho = [];
+                localStorage.removeItem('nutrilog');
+                atualizarCarrinho();
+            }
+        });
 
-// 2. Percorre a lista para mostrar na tela e somar o total
-carrinho.forEach(item => {
-  total += item.preco;
-  lista.innerHTML += `<li>${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}</li>`;
-});
+        
+        function atualizarCarrinho() {
+            const lista = document.getElementById("itens-carrinho");
+            const totalSpan = document.getElementById("valor-total");
+            const qtdSpan = document.getElementById("quantidade-itens");
+            const btnFinalizar = document.getElementById("btn-finalizar");
 
-// 3. Exibe o total
-document.getElementById('total').textContent = total.toFixed(2).replace('.', ',');
+            if (!lista) return;
+
+            lista.innerHTML = "";
+            let total = 0;
+
+            if (carrinho.length === 0) {
+                lista.innerHTML = '<p class="carrinho-vazio">O carrinho está vazio.</p>';
+                if (totalSpan) totalSpan.textContent = "0,00";
+                if (qtdSpan) qtdSpan.textContent = "0";
+                if (btnFinalizar) btnFinalizar.disabled = true;
+                return;
+            }
+
+            carrinho.forEach((item, index) => {
+                total += item.preco;
+                lista.innerHTML += `
+                    <div class="item-carrinho">
+                        <span>${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}</span>
+                        <button class="btn-remover" onclick="remover(${index})">Remover</button>
+                    </div>
+                `;
+            });
+
+            if (totalSpan) totalSpan.textContent = total.toFixed(2).replace('.', ',');
+            if (qtdSpan) qtdSpan.textContent = carrinho.length;
+            if (btnFinalizar) btnFinalizar.disabled = false;
+        }
+
+   
+        window.remover = function(index) {
+            carrinho.splice(index, 1);
+            localStorage.setItem('nutrilog', JSON.stringify(carrinho));
+            atualizarCarrinho();
+        };

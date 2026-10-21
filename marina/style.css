@@ -1,90 +1,152 @@
+/* --- RESET E ESTILOS GERAIS --- */
+* {
+    box-sizing: border-box; /* Garante que padding e border não quebrem a largura das caixas */
+}
+
 body {
     background-color: #F8F3E6;
     font-family: Arial, sans-serif;
     color: #333333;
     margin: 0;
     padding: 20px;
-        }
- 
-        header {
-            background-color: #006B5B;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-        }
- 
-        h1, h2 {
-            margin: 10px 0;
-        }
- 
-       
-        section {
-            background-color: #FFFFFF;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-        }
- 
-       
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+header {
+    background-color: #006B5B;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu {
+    display: flex;             
+    align-items: center;  
+    gap: 1.5rem;
+    justify-content: center;  
+    flex-wrap: wrap; /* Permite que os links do menu quebrem linha se a tela for muito pequena */
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.buscar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+h1, h2 {
+    margin: 10px 0;
+}
+
+section {
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #E0E0E0;
+}
+
+/* --- BOTÕES GERAIS --- */
 button {
-            background-color: #FF5722;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-        }
- 
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+   justify-content: space-between; /* Espaça os elementos (o topo fica em cima e o botão vai para base) */
+    align-items: stretch;
+    margin-top:auto
+}
+
 button:hover {
-            background-color: #E04818;
-        }
- 
-.Opções{
+    background-color: #E04818;
+}
+
+/* --- CARDS / OPÇÕES DE PRATOS --- */
+.Opções {
     display: flex;            
     align-items: center;      
     gap: 15px;                
     margin-bottom: 15px;      
+    flex-wrap: wrap; /* Permite que a imagem e a descrição se empilhem em telas pequenas */
 }
- 
-.Opções img{
+
+.Opções img {
     width: 200px;              
-    height: 200px;              
+    height: 200px;
+    max-width: 100%; /* Garante que a imagem não ultrapasse a tela */
     object-fit: cover;        
-    border-radius: 20px;      
+    border-radius: 20px;
+    flex-shrink: 0; /* Impede que a imagem encolha de forma desproporcional */
 }
- 
+
+/* --- BOTÃO / BLAT DE COMIDA --- */
 .comida {
-            background-color: #eed6d68f;
-            color: rgb(0, 0, 0);
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0px;
-            cursor: pointer;
-             width: 700px;              
-    height: 100px;  
-   
-        }
- 
+    background-color: #eed6d68f;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 15px 20px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 8px; /* Ajustado para harmonizar com os cantos arredondados */
+    cursor: pointer;
+    width: 100%;
+    max-width: 700px; /* Em telas grandes terá no máximo 700px, em telas menores adapta a 100% */
+    min-height: 100px;  
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .comida:hover {
     background-color: #ceb4b4;
 }
- 
-        .menu {
-            display: flex;            
-            align-items: center;  
-            gap: 1.5rem;
-            justify-content: center;  
- 
-        }
- 
-        .menu a {
-            color: white;
-        }
-        .buscar {
-            justify-content: center;
-        }
-       
+
+/* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (CELULARES E TABLETS MENORES) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Reduz a margem externa na tela do celular */
+    }
+
+    .Opções {
+        flex-direction: column; /* Empilha a imagem e o conteúdo verticalmente */
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .Opções img {
+        width: 100%; /* Imagem ocupa toda a largura disponível no celular */
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    .comida {
+        width: 100%; /* Ocupa 100% da largura em dispositivos móveis */
+        font-size: 16px; /* Ajusta o tamanho do texto para telas menores */
+        height: auto;
+        padding: 15px 10px;
+    }
+
+    .menu {
+        gap: 0.8rem;
+    }
+}
