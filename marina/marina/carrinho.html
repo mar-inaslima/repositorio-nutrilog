@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nutrilog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+     <header>
+        <h1>NUTRILOG</h1>
+        <p>Marmitas artesanais especiais para você</p>
+        
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="catalogo.html">Opções</a></li>
+                <li><a href="filtros.html">Filtros</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+
+       
+        <div class="busca-container">
+            <input type="text" placeholder="O que você quer comer hoje?">
+            <button id="buscar">Buscar</button>
+        </div>
+    </header>
+    <div id="resumo-carrinho" class="caixa-carrinho">
+            <h2>Seu Carrinho <span id="quantidade-itens">0</span> itens</h2>
+            <div id="itens-carrinho">
+                <p class="carrinho-vazio">O carrinho está vazio.</p>
+            </div>
+            <div class="rodape-carrinho">
+                <h3>Total: R$ <span id="valor-total">0,00</span></h3>
+                <button id="btn-finalizar" disabled>Finalizar Pedido</button>
+            </div>
+        </div>
+      <script src="script.js"></script>
+</body>
+</html>

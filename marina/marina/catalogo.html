@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrilog - Início</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+     <header>
+        <h1>NUTRILOG</h1>
+        <p>Marmitas artesanais especiais para você</p>
+        
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="catalogo.html">Opções</a></li>
+                <li><a href="filtros.html">Filtros</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </nav>
+
+       
+        <div class="busca-container">
+            <input type="text" placeholder="O que você quer comer hoje?">
+            <button id="buscar">Buscar</button>
+        </div>
+    </header>
+    
+    <h2>Opções do Cardápio</h2>
+    <p>Escolha uma das nossas opções deliciosas e saudáveis!</p>
+<section id="catalogo">
+        
+        <div class="Opções">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYSPpx8Epi9SGT_jvQN5S_gKOhthfeOQOVChK7qnAWug&s=10%22 alt="imagem do almoço">
+        <div class="topo">
+            <h3> Marmita simples sem glúten</h3>
+            <span>Restaurante: Cantinho Saudável</span>
+        </div>
+
+        <div class="rodape-cartao">
+        <span class="preco">R$ 24,90</span>
+        <button id="btn-marmita">Ver detalhes</button>
+        <button class="btn-adicionar" data-nome="Marmita simples sem glúten" data-preco="24.90">Adicionar ao Carrinho</button>
+      </div>
+        </div>
+</section>
+
+<section id="catalogo">
+        <div class="Opções">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUa9kn-7e_DSK9L4ZvFEpAAev2t9UttBkhymotLXufPm08D3og5weYbVs&s=10 alt="imagem do almoço">
+         <div class="topo">
+            <h3> Marmita de salada com carne moída</h3>
+            <span>Restaurante: Cozinha Verde</span>
+        </div>
+
+        <div class="rodape-cartao">
+        <span class="preco">R$ 34,90</span>
+      <button id="btn-salada"> Ver detalhes </button>
+      <button class="btn-adicionar" data-nome="Marmita de salada com carne moída" data-preco="34.90">Adicionar ao Carrinho</button>
+      </div>
+          </div>
+
+ </section>
+
+ <section id="catalogo">
+          <div class="Opções">
+         <img src="https://www.receitasja.com.br/wp-content/uploads/2025/11/tortinha-de-limao-fit-1140x597.jpg" alt="imagem do almoço">
+         <div class="topo">
+            <h3> Sobremesa de limão sem lactose</h3>
+            <span>Restaurante: Doce Saúde</span>
+        </div>
+
+        <div class="rodape-cartao">
+        <span class="preco">R$ 14,90</span>
+      <button id="btn-sobremesa"> Ver detalhes </button>
+      <button class="btn-adicionar" data-nome="Sobremesa de limão sem lactose" data-preco="14.90">Adicionar ao Carrinho</button>
+      </div>
+       </div>
+  </section> 
+
+   <div id="resumo-carrinho" class="caixa-carrinho">
+            <h2>Seu Carrinho <span id="quantidade-itens">0</span> itens</h2>
+            <div id="itens-carrinho">
+                <p class="carrinho-vazio">O carrinho está vazio.</p>
+            </div>
+            <div class="rodape-carrinho">
+                <h3>Total: R$ <span id="valor-total">0,00</span></h3>
+                <button id="btn-finalizar" disabled>Finalizar Pedido</button>
+            </div>
+        </div>
+
+<script src="script.js"></script>
+</body>
+</html>
